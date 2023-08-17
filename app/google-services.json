@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "412176338644",
+    "project_id": "shopfee-ce718",
+    "storage_bucket": "shopfee-ce718.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412176338644:android:c26fef6e60908ab31a7541",
+        "android_client_info": {
+          "package_name": "com.example.shopfee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412176338644-rbi0t95ap7us3lre6u3eqmkqlh5ho5of.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADjsa5FGUb5PcLpwOA09L1B14z_-HJh0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412176338644-rbi0t95ap7us3lre6u3eqmkqlh5ho5of.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
