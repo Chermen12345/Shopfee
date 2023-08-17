@@ -3,6 +3,7 @@
     <style name="Theme.MyApp.CoffeeSplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
-        <item name="postSplashScreenTheme">@style/Theme.Material3.DayNight.NoActionBar</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.Shopfee</item>
+
     </style>
 </resources>
