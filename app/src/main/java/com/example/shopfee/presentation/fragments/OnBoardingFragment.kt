@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import com.example.shopfee.R
 import com.example.shopfee.databinding.FragmentOnBoardingBinding
 import com.example.shopfee.presentation.adapters.ViewPagerOnBoarding
+import com.example.utils.Functions
 
 
-class OnBoardingFragment : Fragment() {
+class OnBoardingFragment : Fragment() , Functions{
 
     //viewbinding variable
 
@@ -37,6 +38,7 @@ class OnBoardingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         adapterPager = ViewPagerOnBoarding(requireActivity().supportFragmentManager,lifecycle)
         setUpPagerAdapter()
 
@@ -46,5 +48,16 @@ class OnBoardingFragment : Fragment() {
     private fun setUpPagerAdapter(){
         binding.pager.adapter = adapterPager
     }
+
+    override fun onBoardingChangePageClick() {
+        binding.apply {
+            if (pager.currentItem!=2){
+                pager.currentItem++
+            }else{
+
+            }
+        }
+    }
+
 
 }
