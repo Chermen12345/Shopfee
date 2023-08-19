@@ -38,6 +38,9 @@ android {
 }
 
 dependencies {
+
+    implementation project(path: ':utils')
+    implementation project(path: ':domain')
     //lifecycle
     def lifecycle_version = "2.6.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")

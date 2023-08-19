@@ -30,7 +30,14 @@
         android:id="@+id/otpFragment"
         android:name="com.example.shopfee.presentation.fragments.OtpFragment"
         android:label="fragment_otp"
-        tools:layout="@layout/fragment_otp" />
+        tools:layout="@layout/fragment_otp" >
+        <argument
+            android:name="verificationId"
+            app:argType="string" />
+        <argument
+            android:name="phonenum"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.shopfee.presentation.fragments.LoginFragment"

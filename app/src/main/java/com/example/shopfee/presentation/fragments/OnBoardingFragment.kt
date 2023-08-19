@@ -1,15 +1,23 @@
 package com.example.shopfee.presentation.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.shopfee.R
 import com.example.shopfee.databinding.FragmentOnBoardingBinding
+import com.example.shopfee.presentation.activities.HomeActivity
 import com.example.shopfee.presentation.adapters.ViewPagerOnBoarding
+import com.example.utils.Consts
+import com.example.utils.Consts.AUTH
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class OnBoardingFragment : Fragment() {
@@ -42,9 +50,21 @@ class OnBoardingFragment : Fragment() {
         adapterPager = ViewPagerOnBoarding(requireActivity().supportFragmentManager,lifecycle)
         setUpPagerAdapter()
 
-        goToLogin()
+        lifecycleScope.launch {
+            async {
+                goToHomeActivity()
+            }.await()
+            delay(1000)
+            async {
+                goToLogin()
+            }
+
+        }
+
 
     }
+
+
 
     private fun setUpPagerAdapter(){
         binding.pager.adapter = adapterPager
@@ -61,13 +81,33 @@ class OnBoardingFragment : Fragment() {
         return isGoLogin ?: return false
     }
 
-    private fun goToLogin(){
+    private suspend fun goToLogin(){
 
-        if (isOnBoarding()){
+        lifecycleScope.launch {
 
-            findNavController().navigate(R.id.action_onBoardingFragment_to_loginFragment)
+
+
+
+
+            if (isOnBoarding()){
+
+                findNavController().navigate(R.id.action_onBoardingFragment_to_loginFragment)
+            }
+
+
+
+        }
+
+    }
+
+    private suspend fun goToHomeActivity(){
+        if (Consts.AUTH.currentUser!=null){
+            val intent = Intent(context, HomeActivity::class.java)
+            startActivity(intent)
         }
     }
+
+
 
 
 

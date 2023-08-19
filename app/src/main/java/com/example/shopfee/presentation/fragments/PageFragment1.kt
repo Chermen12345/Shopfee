@@ -1,15 +1,20 @@
 package com.example.shopfee.presentation.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.shopfee.R
 import com.example.shopfee.databinding.FragmentPage1Binding
+import com.example.shopfee.presentation.activities.HomeActivity
+import com.example.utils.Consts
+import kotlinx.coroutines.launch
 
 
 class PageFragment1 : Fragment() {
@@ -42,6 +47,9 @@ class PageFragment1 : Fragment() {
         changePage()
 
         skipOnBoarding()
+
+
+
     }
     //view paging from 1 to 2 fragment
     private fun changePage(){
@@ -68,4 +76,7 @@ class PageFragment1 : Fragment() {
         }
 
     }
+
+
+
 }
