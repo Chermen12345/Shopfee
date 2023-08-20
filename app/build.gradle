@@ -38,7 +38,7 @@ android {
 }
 
 dependencies {
-
+    implementation project(path: ':features:categories')
     implementation project(path: ':utils')
     implementation project(path: ':domain')
     //lifecycle
