@@ -60,15 +60,23 @@ class OtpFragment : Fragment() {
 
 
 
+    //function for
+
+    //checking successful verification (is user wrote right verification code that firebase sent to user
     private fun verify(){
         binding.btVerify.setOnClickListener {
 
+            //input otp code to edit text
             val otp = binding.edCode.text.toString()
 
             if (otp.isNotEmpty()){
 
+                //here we get credential by users verification id that we got from previous fragment
+
+
                 val credential = PhoneAuthProvider.getCredential(verificationId,otp)
 
+                //here we launch function for signing in firebase with phone credential if user input right otp code
                 signInWithPhoneAuthCredential(credential)
 
 
@@ -82,15 +90,22 @@ class OtpFragment : Fragment() {
         }
     }
 
+    //function for sign in in firebase
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+
+        //here launching firebase auth fuction sign in with credential (phone auth credential)
         AUTH.signInWithCredential(credential).addOnCompleteListener {loginWithPhone->
 
 
 
+
             if (loginWithPhone.isSuccessful){
+
+                //if there arent problems with auth in firebase we set user unique id and phone to database
                 val user = User(binding.tvPhonenum.text.toString(), AUTH.currentUser!!.uid)
                 FIRESTORE.collection("users").document(AUTH.currentUser!!.uid).set(user)
                     .addOnCompleteListener {
+                        //and if setting to database successfully user navigates to home activity
                         if (it.isSuccessful){
                             val intent = Intent(context,HomeActivity::class.java)
                             startActivity(intent)

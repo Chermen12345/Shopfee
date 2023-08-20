@@ -51,10 +51,10 @@ class OnBoardingFragment : Fragment() {
         setUpPagerAdapter()
 
         lifecycleScope.launch {
-            async {
+
                 goToHomeActivity()
-            }.await()
-            delay(1000)
+
+
             async {
                 goToLogin()
             }
