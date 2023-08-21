@@ -41,6 +41,7 @@ dependencies {
     implementation project(path: ':features:categories')
     implementation project(path: ':utils')
     implementation project(path: ':domain')
+    implementation project(path: ':data')
     //lifecycle
     def lifecycle_version = "2.6.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")

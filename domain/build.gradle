@@ -31,7 +31,7 @@ android {
 }
 
 dependencies {
-
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     def koin_version="3.4.3"
     //koin
     implementation "io.insert-koin:koin-core:$koin_version"

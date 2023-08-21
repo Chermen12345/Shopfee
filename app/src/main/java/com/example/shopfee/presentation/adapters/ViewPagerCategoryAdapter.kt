@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.categories.AllProductsFragment
-import com.example.categories.CoffeeFragment
-import com.example.categories.NonCoffeeFragment
+import com.example.categories.fragments.AllProductsFragment
+import com.example.categories.fragments.CoffeeFragment
+import com.example.categories.fragments.NonCoffeeFragment
 
 
 class ViewPagerCategoryAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(fragmentManager,lifecycle) {
