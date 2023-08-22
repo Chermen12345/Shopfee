@@ -8,7 +8,7 @@ class App(): Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin{
-            modules(datamodule, domainmodule, categorymodule)
+            modules(datamodule, domainmodule, categorymodule, appmodule)
         }
     }
 }

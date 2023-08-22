@@ -6,7 +6,7 @@ import org.koin.dsl.module
 
 val categorymodule = module {
     single<CategoryViewModel>{
-        CategoryViewModel(getAllCoffeeUseCase = get())
+        CategoryViewModel(getAllCoffeeUseCase = get(), getProductsByCategoryUseCase = get())
     }
     factory<ProductAdapter> {
         ProductAdapter()
