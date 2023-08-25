@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homefr_to_profilefr"
             app:destination="@id/profilefr" />
+        <action
+            android:id="@+id/action_homefr_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/historyfr"
@@ -39,6 +42,15 @@
             app:destination="@id/historyfr" />
         <action
             android:id="@+id/action_profilefr_to_homefr"
+            app:destination="@id/homefr" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.shopfee.presentation.fragments.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_homefr"
             app:destination="@id/homefr" />
     </fragment>
 </navigation>

@@ -10,6 +10,7 @@ import com.example.categories.databinding.OneProductBinding
 import com.example.domain.model.Coffee
 
 class ProductAdapter(): RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
+    var onItemClick: ((Coffee) -> Unit) ?= null
     inner class ProductHolder(val binding: OneProductBinding): RecyclerView.ViewHolder(binding.root)
 
     val util = object: DiffUtil.ItemCallback<Coffee>(){
@@ -42,6 +43,9 @@ class ProductAdapter(): RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
             tvtitle.text = differ.currentList[position].title
             tvprice.text = "${differ.currentList[position].price}.00$"
             tvrating.text = differ.currentList[position].rating.toString()
+        }
+        holder.itemView.setOnClickListener {
+            onItemClick!!.invoke(differ.currentList[position])
         }
     }
 

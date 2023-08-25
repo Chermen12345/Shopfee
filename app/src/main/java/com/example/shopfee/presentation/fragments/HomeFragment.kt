@@ -7,8 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+
 import com.example.categories.adapters.ProductAdapter
+import com.example.categories.fragments.AllProductsFragment
+import com.example.domain.model.Coffee
+import com.example.shopfee.R
 
 
 import com.example.shopfee.databinding.FragmentHomeBinding
@@ -23,7 +28,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(){
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -61,6 +66,11 @@ class HomeFragment : Fragment() {
         setUpRecyclerViewSearch()
 
         searchProduct()
+
+        adapter.onItemClick = {
+            findNavController().navigate(R.id.action_homefr_to_detailFragment)
+        }
+
     }
 
 
@@ -173,4 +183,6 @@ class HomeFragment : Fragment() {
     private fun message(message: String){
         Toast.makeText(context,message,Toast.LENGTH_LONG).show()
     }
+
+
 }

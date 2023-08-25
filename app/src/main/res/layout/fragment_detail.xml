@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFEBE9"
+    tools:context=".DetailFragment" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgdetail"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:background="@drawable/capu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.66"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgdetail">
+
+            <FrameLayout
+                android:id="@+id/btSheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:fontFamily="@font/archivo"
+                        android:text="Ice"
+                        android:textColor="#3C3C3C"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/textView14"
+                        app:layout_constraintTop_toTopOf="@+id/textView14"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <RadioButton
+                            android:id="@+id/iceradio1"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/radiobtselector"
+                            android:button="@drawable/nullradiobt"
+                            android:checked="true"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:text="Normal"
+                            android:textColor="@drawable/radiotextcolor"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/iceradio2"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/radiobtselector"
+                            android:button="@drawable/nullradiobt"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:text="less"
+                            android:textColor="@drawable/radiotextcolor"
+                            android:textSize="14sp" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:fontFamily="@font/archivo"
+                        android:text="Sugar"
+                        android:textColor="#3C3C3C"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/textView13"
+                        app:layout_constraintTop_toTopOf="@+id/textView13"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <RadioButton
+                            android:id="@+id/sugarradio1"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/radiobtselector"
+                            android:button="@drawable/nullradiobt"
+                            android:checked="true"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:text="Normal"
+                            android:textColor="@drawable/radiotextcolor"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/sugarradio2"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/radiobtselector"
+                            android:button="@drawable/nullradiobt"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:text="less"
+                            android:textColor="@drawable/radiotextcolor"
+                            android:textSize="14sp" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:fontFamily="@font/archivo"
+                        android:text="Size"
+                        android:textColor="#3C3C3C"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/textView12"
+                        app:layout_constraintTop_toTopOf="@+id/textView12"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <RadioButton
+                            android:id="@+id/sizeradio1"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/radiobtselector"
+                            android:button="@drawable/nullradiobt"
+                            android:checked="true"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:text="Regular"
+                            android:textColor="@drawable/radiotextcolor"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/sizeradio2"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/radiobtselector"
+                            android:button="@drawable/nullradiobt"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:text="Medium"
+                            android:textColor="@drawable/radiotextcolor"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/sizeradio3"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/radiobtselector"
+                            android:button="@drawable/nullradiobt"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:text="Large"
+                            android:textColor="@drawable/radiotextcolor"
+                            android:textSize="14sp" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvdetailcat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Coffee"
+                        android:textColor="@color/brandcolor"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvdetailtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Cappuccino"
+                        android:textColor="#3C3C3C"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvdetailcat" />
+
+                    <TextView
+                        android:id="@+id/tvdetaildesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Ice and coffee"
+                        android:textColor="#555555"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvdetailtitle" />
+
+                    <TextView
+                        android:id="@+id/tvdetailprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="25.00$"
+                        android:textColor="#3C3C3C"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvdetailtitle" />
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/star"
+                        app:layout_constraintEnd_toEndOf="@+id/tvdetaildesc"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvdetaildesc" />
+
+                    <TextView
+                        android:id="@+id/tvdetailrating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="28dp"
+                        android:fontFamily="@font/archivo"
+                        android:text="4.6"
+                        android:textColor="#3C3C3C"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/imageView5"
+                        app:layout_constraintTop_toTopOf="@+id/tvdetaildesc" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.94"
+                        app:layout_constraintStart_toEndOf="@+id/tvdetaildesc"
+                        app:layout_constraintTop_toBottomOf="@+id/tvdetailprice"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <ImageView
+                            android:id="@+id/btdicreaseamount"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/img_17" />
+
+                        <TextView
+                            android:id="@+id/tvamount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="#000000"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:id="@+id/btincreaseamount"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/img_18" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="64dp"
+                        android:fontFamily="@font/archivo_bold"
+                        android:text="Customize"
+                        android:textColor="@color/brandcolor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:fontFamily="@font/archivo"
+                        android:text="Variant"
+                        android:textColor="#3C3C3C"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/textView11"
+                        app:layout_constraintTop_toTopOf="@+id/textView11"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <RadioButton
+                            android:id="@+id/variantradio1"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/radiobtselector"
+                            android:button="@drawable/nullradiobt"
+                            android:checked="true"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:text="Ice"
+                            android:textColor="@drawable/radiotextcolor"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/variantradio2"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="6dp"
+                            android:background="@drawable/radiobtselector"
+                            android:button="@drawable/nullradiobt"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:text="Hot"
+                            android:textColor="@drawable/radiotextcolor"
+                            android:textSize="14sp" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Total"
+                        android:textColor="#555555"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+                    <TextView
+                        android:id="@+id/tvdetailprice2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/archivo_bold"
+                        android:text="25.00$"
+                        android:textColor="#3C3C3C"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+                    <android.widget.Button
+                        android:id="@+id/btaddorder"
+                        android:layout_width="160dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/btadd"
+                        android:fontFamily="@font/poppins"
+                        android:text="Add Order"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/tvdetailprice2"
+                        app:layout_constraintTop_toTopOf="@+id/tvdetailprice2"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

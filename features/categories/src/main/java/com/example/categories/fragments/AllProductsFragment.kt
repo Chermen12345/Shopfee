@@ -1,5 +1,6 @@
 package com.example.categories.fragments
 
+import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,11 +9,16 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.categories.R
+
 import com.example.categories.adapters.ProductAdapter
 import com.example.categories.databinding.FragmentAllProductsBinding
 import com.example.categories.viewmodel.CategoryViewModel
+import com.example.domain.model.Coffee
 import com.example.utils.Resource
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -27,7 +33,7 @@ class AllProductsFragment : Fragment() {
 
     private val apiViewModel: CategoryViewModel by viewModel()
 
-    private val adapter: ProductAdapter by inject()
+    val adapter: ProductAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +57,12 @@ class AllProductsFragment : Fragment() {
         checkStateOfResponse()
 
         setUpRecyclerProducts()
+
+
     }
+
+
+
 
 
     private fun checkStateOfResponse(){
@@ -104,6 +115,8 @@ class AllProductsFragment : Fragment() {
     private fun message(message: String){
         Toast.makeText(context,message,Toast.LENGTH_LONG).show()
     }
+
+
 
 
 }
