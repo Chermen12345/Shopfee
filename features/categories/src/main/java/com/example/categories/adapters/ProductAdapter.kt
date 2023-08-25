@@ -1,4 +1,4 @@
-package com.example.shopfee.presentation.adapters
+package com.example.categories.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
