@@ -1,39 +1,30 @@
-package com.example.categories.fragments
+package com.example.shopfee.presentation.fragments
 
-import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.categories.R
-
-import com.example.categories.adapters.ProductAdapter
-import com.example.categories.databinding.FragmentAllProductsBinding
-import com.example.categories.viewmodel.CategoryViewModel
-import com.example.domain.model.Coffee
+import com.example.shopfee.presentation.adapters.ProductAdapter
+import com.example.categories.databinding.FragmentCoffeeBinding
+import com.example.shopfee.presentation.viewmodel.CategoryViewModel
 import com.example.utils.Resource
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.context.startKoin
 
 
-class AllProductsFragment : Fragment() {
+class CoffeeFragment : Fragment() {
 
-    private lateinit var binding: FragmentAllProductsBinding
+    private lateinit var binding: FragmentCoffeeBinding
 
     private val apiViewModel: CategoryViewModel by viewModel()
 
-    val adapter: ProductAdapter by inject()
+    private val adapter: ProductAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +36,7 @@ class AllProductsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentAllProductsBinding.inflate(inflater)
+        binding = FragmentCoffeeBinding.inflate(inflater)
 
         return binding.root
     }
@@ -53,22 +44,15 @@ class AllProductsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        apiViewModel.getAllCoffee()
+        apiViewModel.getProductsByCategory("coffee")
+        setUpRecyclerViewProduct()
         checkStateOfResponse()
-
-        setUpRecyclerProducts()
-
-
     }
-
-
-
-
 
     private fun checkStateOfResponse(){
         lifecycleScope.launch {
 
-            apiViewModel.stateOfResponseAllCoffee.collectLatest {state->
+            apiViewModel.stateOfResponseProductsByCategory.collectLatest {state->
 
                 when(state){
 
@@ -91,31 +75,25 @@ class AllProductsFragment : Fragment() {
             }
 
         }
-
     }
 
-    private fun setUpRecyclerProducts(){
-
-        binding.rcAllProductscat.adapter = adapter
-        binding.rcAllProductscat.layoutManager = LinearLayoutManager(context)
-    }
-
-    private fun showProgressBar(){
-
-        binding.prbar.visibility = View.VISIBLE
+    private fun setUpRecyclerViewProduct(){
+        binding.rcCoffeeCat.adapter = adapter
+        binding.rcCoffeeCat.layoutManager = LinearLayoutManager(context)
     }
 
 
     private fun hideProgressBar(){
-
-        binding.prbar.visibility = View.GONE
+        binding.prBar.visibility = View.GONE
     }
 
+    private fun showProgressBar(){
+        binding.prBar.visibility = View.VISIBLE
+    }
 
     private fun message(message: String){
         Toast.makeText(context,message,Toast.LENGTH_LONG).show()
     }
-
 
 
 

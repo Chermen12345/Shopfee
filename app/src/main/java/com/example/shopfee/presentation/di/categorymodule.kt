@@ -1,8 +1,7 @@
-package com.example.categories.di
+package com.example.shopfee.presentation.di
 
-import com.example.categories.adapters.ProductAdapter
-import com.example.categories.viewmodel.CategoryViewModel
-import org.koin.android.ext.android.inject
+import com.example.shopfee.presentation.adapters.ProductAdapter
+import com.example.shopfee.presentation.viewmodel.CategoryViewModel
 import org.koin.dsl.module
 
 val categorymodule = module {

@@ -10,9 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import com.example.categories.adapters.ProductAdapter
-import com.example.categories.fragments.AllProductsFragment
-import com.example.domain.model.Coffee
+import com.example.shopfee.presentation.adapters.ProductAdapter
 import com.example.shopfee.R
 
 

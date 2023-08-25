@@ -1,7 +1,7 @@
 package com.example.shopfee.presentation.di
 
 import android.app.Application
-import com.example.categories.di.categorymodule
+
 import org.koin.core.context.startKoin
 
 class App(): Application() {
