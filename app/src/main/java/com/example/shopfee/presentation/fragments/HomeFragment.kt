@@ -10,9 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import com.example.categories.adapters.ProductAdapter
-import com.example.categories.fragments.AllProductsFragment
-import com.example.domain.model.Coffee
+import com.example.shopfee.presentation.adapters.ProductAdapter
 import com.example.shopfee.R
 
 
@@ -62,14 +60,12 @@ class HomeFragment : Fragment(){
 
         openSearch()
         removeSearch()
-
-        setUpRecyclerViewSearch()
-
         searchProduct()
 
-        adapter.onItemClick = {
-            findNavController().navigate(R.id.action_homefr_to_detailFragment)
-        }
+        setUpRecyclerViewSearch()
+        onItemClick()
+
+
 
     }
 
@@ -133,6 +129,15 @@ class HomeFragment : Fragment(){
 
         }
     }
+
+
+    private fun onItemClick(){
+        adapter.onItemClick = {
+            findNavController().navigate(R.id.action_homefr_to_detailFragment)
+        }
+    }
+
+
     private fun checkStateOfResponse(){
         lifecycleScope.launch {
 

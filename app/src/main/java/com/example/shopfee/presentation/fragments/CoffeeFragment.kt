@@ -1,4 +1,4 @@
-package com.example.categories.fragments
+package com.example.shopfee.presentation.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.categories.R
-import com.example.categories.adapters.ProductAdapter
-import com.example.categories.databinding.FragmentNonCoffeeBinding
-import com.example.categories.viewmodel.CategoryViewModel
+import com.example.shopfee.R
+import com.example.shopfee.databinding.FragmentCoffeeBinding
+import com.example.shopfee.presentation.adapters.ProductAdapter
+
+import com.example.shopfee.presentation.viewmodel.CategoryViewModel
 import com.example.utils.Resource
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -19,9 +21,9 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class NonCoffeeFragment : Fragment() {
+class CoffeeFragment : Fragment() {
 
-    private lateinit var binding: FragmentNonCoffeeBinding
+    private lateinit var binding: FragmentCoffeeBinding
 
     private val apiViewModel: CategoryViewModel by viewModel()
 
@@ -37,7 +39,7 @@ class NonCoffeeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentNonCoffeeBinding.inflate(inflater)
+        binding = FragmentCoffeeBinding.inflate(inflater)
 
         return binding.root
     }
@@ -45,20 +47,17 @@ class NonCoffeeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getNonCoffeeProducts()
-        setUpRecyclerViewProduct()
+        apiViewModel.getProductsByCategory("coffee")
         checkStateOfResponse()
-    }
 
-
-    private fun getNonCoffeeProducts(){
-        apiViewModel.getProductsByCategoryNonCoffee("noncoffee")
+        setUpRecyclerViewProduct()
+        onItemClick()
     }
 
     private fun checkStateOfResponse(){
         lifecycleScope.launch {
 
-            apiViewModel.stateOfResponseProductsByCategoryNonCoffee.collectLatest {state->
+            apiViewModel.stateOfResponseProductsByCategory.collectLatest {state->
 
                 when(state){
 
@@ -84,22 +83,29 @@ class NonCoffeeFragment : Fragment() {
     }
 
     private fun setUpRecyclerViewProduct(){
-        binding.rcNoncoffeecat.adapter = adapter
-        binding.rcNoncoffeecat.layoutManager = LinearLayoutManager(context)
+        binding.rcCoffeeCat.adapter = adapter
+        binding.rcCoffeeCat.layoutManager = LinearLayoutManager(context)
+    }
+
+    private fun onItemClick(){
+        adapter.onItemClick = {
+            findNavController().navigate(R.id.action_homefr_to_detailFragment)
+        }
     }
 
 
     private fun hideProgressBar(){
-        binding.prBar2.visibility = View.GONE
+        binding.prBar.visibility = View.GONE
     }
 
     private fun showProgressBar(){
-        binding.prBar2.visibility = View.VISIBLE
+        binding.prBar.visibility = View.VISIBLE
     }
 
     private fun message(message: String){
-        Toast.makeText(context,message, Toast.LENGTH_LONG).show()
+        Toast.makeText(context,message,Toast.LENGTH_LONG).show()
     }
+
 
 
 }

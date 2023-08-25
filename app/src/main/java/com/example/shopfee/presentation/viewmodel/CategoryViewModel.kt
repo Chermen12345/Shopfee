@@ -1,4 +1,4 @@
-package com.example.categories.viewmodel
+package com.example.shopfee.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -36,6 +36,6 @@ class DetailFragment : Fragment() {
     }
     private fun setUpBottomSheetDialog(){
 
-        BottomSheetBehavior.from(binding.btSheet).peekHeight = 400
+        BottomSheetBehavior.from(binding.btSheet).peekHeight = 600
     }
 }

@@ -1,30 +1,23 @@
-package com.example.categories.fragments
+package com.example.shopfee.presentation.fragments
 
-import android.app.Application
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.categories.R
+import com.example.shopfee.R
+import com.example.shopfee.databinding.FragmentAllProductsBinding
 
-import com.example.categories.adapters.ProductAdapter
-import com.example.categories.databinding.FragmentAllProductsBinding
-import com.example.categories.viewmodel.CategoryViewModel
-import com.example.domain.model.Coffee
+import com.example.shopfee.presentation.viewmodel.CategoryViewModel
 import com.example.utils.Resource
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.context.startKoin
 
 
 class AllProductsFragment : Fragment() {
@@ -33,7 +26,7 @@ class AllProductsFragment : Fragment() {
 
     private val apiViewModel: CategoryViewModel by viewModel()
 
-    val adapter: ProductAdapter by inject()
+    val adapter: com.example.shopfee.presentation.adapters.ProductAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,11 +46,13 @@ class AllProductsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //api
         apiViewModel.getAllCoffee()
         checkStateOfResponse()
 
+        //recycler view
         setUpRecyclerProducts()
-
+        onItemClick()
 
     }
 
@@ -98,6 +93,12 @@ class AllProductsFragment : Fragment() {
 
         binding.rcAllProductscat.adapter = adapter
         binding.rcAllProductscat.layoutManager = LinearLayoutManager(context)
+    }
+
+    private fun onItemClick(){
+        adapter.onItemClick = {
+            findNavController().navigate(R.id.action_homefr_to_detailFragment)
+        }
     }
 
     private fun showProgressBar(){

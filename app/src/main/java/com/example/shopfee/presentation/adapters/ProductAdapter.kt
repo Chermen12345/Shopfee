@@ -1,4 +1,4 @@
-package com.example.categories.adapters
+package com.example.shopfee.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.categories.databinding.OneProductBinding
+
 import com.example.domain.model.Coffee
+import com.example.shopfee.databinding.OneProductBinding
 
 class ProductAdapter(): RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     var onItemClick: ((Coffee) -> Unit) ?= null
