@@ -10,8 +10,8 @@ import com.bumptech.glide.Glide
 import com.example.domain.model.Coffee
 import com.example.shopfee.databinding.OneProductBinding
 
-class ProductAdapter(): RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
-    var onItemClick: ((Coffee) -> Unit) ?= null
+class ProductAdapter(val clickEvents: ClickEvents): RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
+
     inner class ProductHolder(val binding: OneProductBinding): RecyclerView.ViewHolder(binding.root)
 
     val util = object: DiffUtil.ItemCallback<Coffee>(){
@@ -46,9 +46,12 @@ class ProductAdapter(): RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
             tvrating.text = differ.currentList[position].rating.toString()
         }
         holder.itemView.setOnClickListener {
-            onItemClick!!.invoke(differ.currentList[position])
+           clickEvents.onItemClick(differ.currentList[position])
         }
     }
 
 
+}
+interface ClickEvents{
+    fun onItemClick(coffee: Coffee)
 }

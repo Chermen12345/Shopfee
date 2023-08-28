@@ -9,10 +9,12 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.domain.model.Coffee
 import com.example.shopfee.R
 
 
 import com.example.shopfee.databinding.FragmentNonCoffeeBinding
+import com.example.shopfee.presentation.adapters.ClickEvents
 import com.example.shopfee.presentation.adapters.ProductAdapter
 import com.example.shopfee.presentation.viewmodel.CategoryViewModel
 import com.example.utils.Resource
@@ -22,13 +24,13 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class NonCoffeeFragment : Fragment() {
+class NonCoffeeFragment : Fragment() , ClickEvents{
 
     private lateinit var binding: FragmentNonCoffeeBinding
 
     private val apiViewModel: CategoryViewModel by viewModel()
 
-    private val adapter: ProductAdapter by inject()
+    private lateinit var adapter: ProductAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +43,8 @@ class NonCoffeeFragment : Fragment() {
     ): View? {
 
         binding = FragmentNonCoffeeBinding.inflate(inflater)
+        adapter = ProductAdapter(this)
+
 
         return binding.root
     }
@@ -53,7 +57,7 @@ class NonCoffeeFragment : Fragment() {
 
 
         setUpRecyclerViewProduct()
-        onItemClick()
+
     }
 
 
@@ -94,11 +98,7 @@ class NonCoffeeFragment : Fragment() {
         binding.rcNoncoffeecat.layoutManager = LinearLayoutManager(context)
     }
 
-    private fun onItemClick(){
-        adapter.onItemClick = {
-            findNavController().navigate(R.id.action_homefr_to_detailFragment)
-        }
-    }
+
 
 
     private fun hideProgressBar(){
@@ -113,5 +113,14 @@ class NonCoffeeFragment : Fragment() {
         Toast.makeText(context,message, Toast.LENGTH_LONG).show()
     }
 
+    override fun onItemClick(coffee: Coffee) {
+        val bundle = Bundle()
+        bundle.putSerializable(DETAIL_ARGUMENT, coffee)
+        findNavController().navigate(R.id.action_homefr_to_detailFragment,bundle)
+    }
 
+
+    companion object{
+        const val DETAIL_ARGUMENT = "COFFEE_DETAIL"
+    }
 }

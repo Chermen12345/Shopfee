@@ -11,18 +11,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+        <android.widget.Button
+            android:id="@+id/btback"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/back"
+            app:layout_constraintBottom_toTopOf="@+id/imgdetail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/imgdetail"
-            android:layout_width="300dp"
-            android:layout_height="400dp"
+            android:layout_width="350dp"
+            android:layout_height="450dp"
             android:layout_gravity="center"
-            android:background="@drawable/capu"
+            android:layout_marginTop="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.66"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:src="@tools:sample/avatars" />
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -326,6 +338,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
                             android:text="1"
                             android:textColor="#000000"
                             android:textSize="16sp" />
@@ -437,6 +451,7 @@
                         android:id="@+id/btaddorder"
                         android:layout_width="160dp"
                         android:layout_height="60dp"
+                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:background="@drawable/btadd"
                         android:fontFamily="@font/poppins"
@@ -447,7 +462,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toEndOf="@+id/tvdetailprice2"
-                        app:layout_constraintTop_toTopOf="@+id/tvdetailprice2"
+                        app:layout_constraintTop_toTopOf="@+id/textView15"
                         app:layout_constraintVertical_bias="0.0" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

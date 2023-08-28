@@ -7,8 +7,6 @@ val categorymodule = module {
     single<CategoryViewModel>{
         CategoryViewModel(getAllCoffeeUseCase = get(), getProductsByCategoryUseCase = get())
     }
-    factory <com.example.shopfee.presentation.adapters.ProductAdapter>{
-        com.example.shopfee.presentation.adapters.ProductAdapter()
-    }
+
 
 }
