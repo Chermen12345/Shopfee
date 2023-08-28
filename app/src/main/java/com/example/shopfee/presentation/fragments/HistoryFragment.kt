@@ -1,60 +1,76 @@
 package com.example.shopfee.presentation.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.domain.model.Coffee
+
+import com.example.domain.model.Order
 import com.example.shopfee.R
+import com.example.shopfee.databinding.FragmentHistoryBinding
+import com.example.shopfee.presentation.adapters.ClickEvents
+import com.example.shopfee.presentation.adapters.HistoryAdapter
+import com.example.shopfee.presentation.adapters.ProductAdapter
+import com.example.utils.Consts.AUTH
+import com.example.utils.Consts.FIRESTORE
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HistoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HistoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+class HistoryFragment : Fragment(){
+
+    private lateinit var binding: FragmentHistoryBinding
+
+    private lateinit var adapter: HistoryAdapter
+    private val listOfOrders = arrayListOf<Order>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+
+        binding = FragmentHistoryBinding.inflate(inflater)
+        adapter = HistoryAdapter()
+
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HistoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HistoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        getOrders()
+
+
+    }
+
+
+    private fun getOrders(){
+        FIRESTORE.collection("users").document(AUTH.currentUser!!.uid)
+            .collection("addedOrders").get().addOnSuccessListener {
+                if (!it.isEmpty){
+                    for (data in it.documents){
+                        val order = data.toObject(Order::class.java)
+                        order?.let { listOfOrders.add(it) }
+                        Log.d("tagg", order!!.coffee!!.title)
+                    }
+                    adapter.differ.submitList(listOfOrders)
+                    binding.rchistory.adapter = adapter
+                    binding.rchistory.layoutManager = LinearLayoutManager(context)
                 }
             }
+
     }
+
+
 }
