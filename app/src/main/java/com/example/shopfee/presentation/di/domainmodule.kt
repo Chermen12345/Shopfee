@@ -1,5 +1,6 @@
 package com.example.shopfee.presentation.di
 
+import com.example.domain.usecases.AddOrderUseCase
 import com.example.domain.usecases.GetAllCoffeeUseCase
 import com.example.domain.usecases.GetProductsByCategoryUseCase
 import com.example.domain.usecases.SearchProductUseCase
@@ -16,5 +17,8 @@ val domainmodule = module {
     }
     single<SearchProductUseCase> {
         SearchProductUseCase(repo = get())
+    }
+    single<AddOrderUseCase> {
+        AddOrderUseCase(repo = get())
     }
 }

@@ -2,7 +2,9 @@ package com.example.shopfee.presentation.di
 
 import com.example.data.api.CoffeeService
 import com.example.data.repoimpl.ApiRepoImpl
+import com.example.data.repoimpl.FirebaseRepoImpl
 import com.example.domain.repo.ApiRepo
+import com.example.domain.repo.FirebaseRepo
 import com.example.utils.Consts.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -24,5 +26,8 @@ val datamodule = module {
     }
     single<ApiRepo> {
         ApiRepoImpl(service = get())
+    }
+    single<FirebaseRepo> {
+        FirebaseRepoImpl()
     }
 }
